@@ -21,7 +21,7 @@ The boilerplate for making electron applications built with vue (pretty much wha
 
 ## Overview
 
-The aim of this project is to add support of Spring Boot to the boilertemplate of SimulatedGREG.
+The aim of this project is to add support of Spring Boot to the boilertemplate of [SimulatedGREG](https://github.com/SimulatedGREG/electron-vue).
 
 #### Check out the detailed documentation [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
 
