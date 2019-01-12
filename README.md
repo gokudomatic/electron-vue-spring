@@ -30,8 +30,6 @@ Things you'll find in this boilerplate in addition of the original...
 * Basic Spring Boot project with Maven
 * Loader page that waits until the Spring Boot application is ready
 
-\*Customizable during vue-cli scaffolding
-
 ### Getting Started
 
 This boilerplate was built as a template for [vue-cli](https://github.com/vuejs/vue-cli) and includes options to customize your final scaffolded app. The use of `node@^7` or higher required. electron-vue also officially recommends the [`yarn`](https://yarnpkg.org) package manager as it handles dependencies much better and can help reduce final build size with `yarn clean`.
