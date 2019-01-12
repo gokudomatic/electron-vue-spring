@@ -13,7 +13,8 @@ let mainConfig = {
     main: path.join(__dirname, '../src/main/index.js')
   },
   externals: [
-    ...Object.keys(dependencies || {})
+    ...Object.keys(dependencies || {},
+      {'electron-debug': 'electron-debug'})
   ],
   module: {
     rules: [
@@ -65,7 +66,8 @@ let mainConfig = {
 if (process.env.NODE_ENV !== 'production') {
   mainConfig.plugins.push(
     new webpack.DefinePlugin({
-      '__static': `"${path.join(__dirname, '../static').replace(/\\/g, '\\\\')}"`
+      '__static': `"${path.join(__dirname, '../static').replace(/\\/g, '\\\\')}"`,
+      '__opt': `"${path.join(__dirname, '../opt').replace(/\\/g, '\\\\')}"`
     })
   )
 }
@@ -77,7 +79,8 @@ if (process.env.NODE_ENV === 'production') {
   mainConfig.plugins.push(
     new BabiliWebpackPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      'process.env.NODE_ENV': '"production"',
+      '__opt': `"${'.'}"`
     })
   )
 }

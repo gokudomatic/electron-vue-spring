@@ -3,6 +3,9 @@
 
 {{/if_eq}}
 import { app, BrowserWindow } from 'electron'{{#if_eq eslintConfig 'airbnb'}} // eslint-disable-line{{/if_eq}}
+const logger = require('electron-log');
+const getPort = require('get-port');
+const path = require('path');
 
 /**
  * Set `__static` path to static files in production
@@ -12,19 +15,53 @@ if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\'){{#if_eq eslintConfig 'airbnb'}} // eslint-disable-line{{/if_eq}}
 }
 
+const springJarFilename = 'spring-1.0.0.jar'; 
+
+let serverProcess
+function startServer(port) {
+
+  logger.info(__opt)
+
+  const server = `${path.join(__opt, springJarFilename)}`;
+  serverProcess = require('child_process').spawn('java', [ '-jar', server, `--server.port=${port}`]);
+
+  serverProcess.stdout.on('data', data => {
+    logger.info('SERVER: ' + data);
+  });
+
+  serverProcess.stderr.on('data', data => {
+    logger.error('SERVER: ' + data);
+  });
+
+  if (serverProcess.pid) {
+    logger.info("Server PID: " + serverProcess.pid);
+  } else {
+    logger.error("Failed to launch server process.")
+  }
+
+}
+
 let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
 
 function createWindow () {
+  getPort({ port: 9090 }).then(port => {
+    startServer(port);
+    global.springServer = {
+      'url':`http://localhost:${port}`
+    }
+  })
+
   /**
    * Initial window options
    */
   mainWindow = new BrowserWindow({
     height: 563,
     useContentSize: true,
-    width: 1000
+    width: 1000,
+    webPreferences: {webSecurity: false}
   })
 
   mainWindow.loadURL(winURL)
@@ -49,6 +86,16 @@ app.on('activate', () => {
 })
 {{#if_eq builder 'builder'}}
 
+app.on('will-quit', () => {
+  if (serverProcess) {
+    logger.info(`Killing server process ${serverProcess.pid}`);
+    const kill = require('tree-kill');
+    kill(serverProcess.pid, 'SIGTERM', function (err) {
+      logger.info('Server process killed');
+        serverProcess = null;
+    });
+  }
+});
 /**
  * Auto Updater
  *
