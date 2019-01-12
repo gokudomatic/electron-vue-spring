@@ -73,7 +73,7 @@ Make sure to check out [**A Note for Windows Users**](https://simulatedgreg.gitb
 Just point to the `1.0` branch. Please note that electron-vue has officially deprecated the usage of `vue@^1`, so project structure, features, and documentation will reflect those changes ([**legacy documentation**](https://github.com/SimulatedGREG/electron-vue/tree/1.0/docs)).
 
 ```bash
-vue init simulatedgreg/electron-vue#1.0 my-project
+vue init gokudomatic/electron-vue-spring#1.0 my-project
 ```
 
 ### Next Steps
