@@ -1,11 +1,11 @@
 {
   "name": "electron-vue",
   "version": "0.0.0",
-  "description": "An Electron & Vue.js quick start boilerplate with vue-cli support",
+  "description": "An Electron & Vue.js & Spring Boot quick start boilerplate with vue-cli support",
   "main": "meta.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SimulatedGREG/electron-vue.git"
+    "url": "git+https://github.com/gokudomatic/electron-vue-spring.git"
   },
   "keywords": [
     "electron",
@@ -17,12 +17,12 @@
     "vuex",
     "resource"
   ],
-  "author": "Greg Holguin <simulatedgreg@gmail.com> (https://github.com/SimulatedGREG)",
+  "author": "Gokudomatic (https://github.com/gokudomatic)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SimulatedGREG/electron-vue/issues"
+    "url": "https://github.com/gokudomatic/electron-vue-spring/issues"
   },
-  "homepage": "https://github.com/SimulatedGREG/electron-vue#readme",
+  "homepage": "https://github.com/gokudomatic/electron-vue-spring#readme",
   "devDependencies": {
     "suppose": "^0.6.1"
   }
