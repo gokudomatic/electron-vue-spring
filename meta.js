@@ -10,7 +10,7 @@ function getCurrentSHA (author) {
 
     get({
       host: 'api.github.com',
-      path: `/repos/simulatedgreg/electron-vue/commits${isBranch ? '?sha=' + process.argv[2].split('#')[1] : ''}`,
+      path: `/repos/gokudomatic/electron-vue-spring/commits${isBranch ? '?sha=' + process.argv[2].split('#')[1] : ''}`,
       headers: {
         'User-Agent': author
       }
@@ -40,7 +40,7 @@ function appendSHALink (sha, destDirName) {
   let md = readFileSync(readmePath, 'utf8')
   md = md.replace(
     ' using',
-    `@[${sha.substring(0, 7)}](https://github.com/SimulatedGREG/electron-vue/tree/${sha}) using`
+    `@[${sha.substring(0, 7)}](https://github.com/gokudomatic/electron-vue-spring/tree/${sha}) using`
   )
   writeFileSync(readmePath, md, 'utf8')
 }
