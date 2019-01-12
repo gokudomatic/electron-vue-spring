@@ -18,7 +18,7 @@ The boilerplate for making electron applications built with vue (pretty much wha
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-[![Build Status](https://semaphoreci.com/api/v1/simulatedgreg/electron-vue/branches/master/badge.svg)](https://semaphoreci.com/simulatedgreg/electron-vue)
+[![Build Status](https://semaphoreci.com/api/v1/gokudomatic/electron-vue-spring/branches/master/badge.svg)](https://semaphoreci.com/simulatedgreg/electron-vue)
 </div>
 
 ## Overview
@@ -56,7 +56,7 @@ This boilerplate was built as a template for [vue-cli](https://github.com/vuejs/
 ```bash
 # Install vue-cli and scaffold boilerplate
 npm install -g vue-cli
-vue init simulatedgreg/electron-vue my-project
+vue init gokudomatic/electron-vue-spring my-project
 
 # Install dependencies and run your app
 cd my-project
