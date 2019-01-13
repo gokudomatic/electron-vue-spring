@@ -15,7 +15,8 @@ module.exports = {
   extends: 'airbnb-base',
   {{/if_eq}}
   globals: {
-    __static: true
+    __static: true,
+    __opt: true
   },
   plugins: [
     'html'

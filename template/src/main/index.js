@@ -23,7 +23,7 @@ function startServer(port) {
   logger.info(__opt)
 
   const server = `${path.join(__opt, springJarFilename)}`;
-  serverProcess = require('child_process').spawn('java', [ '-jar', server, `--server.port=${port}`]);
+  serverProcess = require('child_process').spawn('java', ['-jar', server, `--server.port=${port}`]);
 
   serverProcess.stdout.on('data', data => {
     logger.info('SERVER: ' + data);
@@ -91,6 +91,9 @@ app.on('will-quit', () => {
     logger.info(`Killing server process ${serverProcess.pid}`);
     const kill = require('tree-kill');
     kill(serverProcess.pid, 'SIGTERM', function (err) {
+      if (err) {
+        console.log(err.stack)
+      }
       logger.info('Server process killed');
         serverProcess = null;
     });
